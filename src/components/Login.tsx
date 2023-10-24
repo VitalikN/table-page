@@ -5,10 +5,7 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 
 import styles from "../sass/layouts/login.module.scss";
 import * as Yup from "yup";
-
-interface ErrorFeedbackProps {
-  name: string;
-}
+import { ErrorFeedbackProps } from "../types/types";
 
 const validationSchema = Yup.object().shape({
   username: Yup.string()

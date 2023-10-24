@@ -12,9 +12,13 @@ import {
   PURGE,
   REGISTER,
 } from "redux-persist";
+import { tableApi } from "./table/tableApiSlice";
+import paginationReducer from "./table/paginationSlice";
+
 const reducers = {
   [authApi.reducerPath]: authApi.reducer,
-  // Add other reducers here
+  [tableApi.reducerPath]: tableApi.reducer,
+  pagination: paginationReducer,
 };
 
 const persistConfig = {
@@ -33,7 +37,7 @@ const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }).concat(authApi.middleware),
+    }).concat(authApi.middleware, tableApi.middleware),
 });
 
 export const persistor = persistStore(store);

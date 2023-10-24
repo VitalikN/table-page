@@ -3,10 +3,7 @@
 import { Provider } from "react-redux";
 import store from "../store";
 import { persistStore } from "redux-persist";
-
-interface IProps {
-  children: React.ReactNode;
-}
+import { IProps } from "../../types/types";
 
 persistStore(store);
 
