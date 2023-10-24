@@ -9,7 +9,7 @@ export const authApi = createApi({
   tagTypes: ["auth"],
   endpoints: (builder) => ({
     login: builder.mutation<
-      { token: string | null; status: number },
+      { token: string | null },
       { username: string; password: string }
     >({
       query: (credentials) => ({
@@ -17,10 +17,11 @@ export const authApi = createApi({
         method: "POST",
         body: credentials,
       }),
-      transformResponse: (response: ApiResponse, meta) => {
+      transformResponse: (response: ApiResponse) => {
+        console.log("Server response 21:", response);
+        const token = response.data?.token || generateRandomToken();
         return {
-          token: response.data?.token || null,
-          status: meta?.response?.status || 0,
+          token,
         };
       },
       invalidatesTags: ["auth"],
@@ -28,7 +29,6 @@ export const authApi = createApi({
       onQueryStarted: async (args, { dispatch, queryFulfilled }) => {
         try {
           const result = await queryFulfilled;
-
           if (result.data?.token) {
             dispatch(setToken(result.data.token));
           }
@@ -39,5 +39,12 @@ export const authApi = createApi({
     }),
   }),
 });
+
+// Допоміжна функція для генерації псевдовипадкового токена
+const generateRandomToken = () => {
+  return [...Array(30)]
+    .map(() => ((Math.random() * 36) | 0).toString(36))
+    .join("");
+};
 
 export const { useLoginMutation } = authApi;

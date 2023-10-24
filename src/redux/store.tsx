@@ -14,11 +14,14 @@ import {
 } from "redux-persist";
 import { tableApi } from "./table/tableApiSlice";
 import paginationReducer from "./table/paginationSlice";
+import authSlice from "./auth/authSlice";
 
 const reducers = {
+  auth: authSlice.reducer,
+  pagination: paginationReducer,
+
   [authApi.reducerPath]: authApi.reducer,
   [tableApi.reducerPath]: tableApi.reducer,
-  pagination: paginationReducer,
 };
 
 const persistConfig = {
