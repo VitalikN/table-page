@@ -1,9 +1,10 @@
+import { Balls } from "@/components/Balls";
 import PrivateRoute from "@/components/PrivateRoute/PrivateRoute";
 
 import dynamic from "next/dynamic";
 
 const DynamicTable = dynamic(() => import("@/components/Table"), {
-  loading: () => <p>Loading...</p>,
+  loading: () => <Balls />,
   ssr: false,
 });
 

@@ -50,7 +50,7 @@ const Login: React.FC = () => {
             <Form className={styles.form}>
               <div className={styles.form__box}>
                 <label className={styles.label}>
-                  Ім`я:
+                  Name:
                   <Field
                     className={styles.input}
                     type="text"
@@ -62,7 +62,7 @@ const Login: React.FC = () => {
               </div>
               <div className={styles.form__box}>
                 <label className={styles.label}>
-                  Пароль:
+                  Password:
                   <Field
                     className={styles.input}
                     type="password"

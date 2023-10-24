@@ -6,7 +6,7 @@ export type ResponseData = {
 };
 
 export type TableData = {
-  id: number;
+  id?: number;
   name: string;
   email: string;
   birthday_date: string;
@@ -23,11 +23,6 @@ export type ApiResponse = {
 
 export interface IProps {
   children: React.ReactNode;
-}
-import { ReactNode } from "react";
-
-export interface PrivateRouteProps {
-  children: ReactNode;
 }
 
 export type RootState = {
@@ -48,4 +43,10 @@ export interface PaginationProps {
 
 export interface ErrorFeedbackProps {
   name: string;
+}
+export type Action = "POST" | "PUT" | "PATCH" | null;
+
+export interface AddTableRowFormProps {
+  action: Action;
+  selectedId: number | null;
 }

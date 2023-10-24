@@ -7,6 +7,7 @@ export const useAuth = () => {
   const [login, { data, isLoading, isError, error }] = useLoginMutation();
   const router = useRouter();
   const dispatch = useDispatch();
+
   useEffect(() => {
     if (data && data.token) {
       dispatch(setToken(data.token));

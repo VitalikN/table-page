@@ -3,9 +3,10 @@
 import { useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
-import { PrivateRouteProps, RootState } from "../../types/types";
+import { IProps, RootState } from "../../types/types";
+import { Balls } from "../Balls";
 
-const PrivateRoute: React.FC<PrivateRouteProps> = ({ children }) => {
+const PrivateRoute: React.FC<IProps> = ({ children }) => {
   const router = useRouter();
   const token = useSelector((state: RootState) => state.auth?.token);
   const [loading, setLoading] = useState(true);
@@ -20,7 +21,7 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({ children }) => {
   }, [router, token]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Balls />;
   }
   return <>{children}</>;
 };

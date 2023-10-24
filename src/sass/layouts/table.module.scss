@@ -1,13 +1,18 @@
 @import "../utils/container.scss";
 @import "../utils/mixins";
 
+.section__table {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .table__wrapper {
   overflow-y: auto;
 }
 
 .table {
   width: 100%;
-  // border-collapse: collapse;
   margin: 25px 0;
   font-size: 18px;
   text-align: left;
@@ -15,6 +20,10 @@
   th,
   td {
     padding: 15px;
+  }
+  td:last-child {
+    display: flex;
+    gap: 15px;
   }
   tr {
     transition: all 0.5s;
@@ -32,4 +41,13 @@
 .table tr:focus {
   color: #f2f2f2;
   background: #0a57d0ad;
+}
+.icon {
+  font-size: 25px;
+  // transition: 0.5s;
+  &:hover,
+  &:focus {
+    scale: 1.2;
+    cursor: pointer;
+  }
 }
