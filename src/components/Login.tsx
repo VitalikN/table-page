@@ -11,7 +11,6 @@ const Login: React.FC = () => {
   const { login, isLoading, isError, error } = useAuth();
 
   const handleLogin = (username: string, password: string) => {
-    console.log("handleLogin called with:", username, password);
     if (username && password) {
       login({ username, password });
     }
