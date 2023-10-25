@@ -1,0 +1,27 @@
+@import "../utils/container.scss";
+@import "../utils/mixins";
+.body-no-scroll {
+  overflow: hidden;
+}
+.header {
+  background: #0a57d0ad;
+}
+.nav__list {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navigation__link {
+  cursor: pointer;
+  color: #f2f2f2;
+  font-size: 23px;
+  font-weight: 500;
+
+  transition: color 0.5s;
+  &:hover,
+  &.active {
+    color: #0a57d0f5;
+  }
+}

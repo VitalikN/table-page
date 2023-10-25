@@ -47,7 +47,6 @@ const Pagination: React.FC<PaginationProps> = ({
         </button>
       ))}
 
-      {/* Кнопка для останньої сторінки */}
       {endPage < totalPages && (
         <>
           <span>...</span>

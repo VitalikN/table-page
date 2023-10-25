@@ -1,12 +1,6 @@
 @import "../utils/container.scss";
 @import "../utils/mixins";
 
-.section__table {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 .table__wrapper {
   overflow-y: auto;
 }
@@ -44,10 +38,63 @@
 }
 .icon {
   font-size: 25px;
-  // transition: 0.5s;
+  cursor: pointer;
+
   &:hover,
   &:focus {
     scale: 1.2;
-    cursor: pointer;
+  }
+}
+/** search*/
+.section__table {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 50px;
+}
+.section__title {
+  text-align: center;
+  padding-bottom: 30px;
+  color: #0a57d0ad;
+}
+
+.search__box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding-bottom: 30px;
+  width: 100%;
+}
+
+.search__icon {
+  font-size: 20px;
+  cursor: pointer;
+  transition: 0.5s;
+  &:hover,
+  &:focus {
+    scale: 1.2;
+  }
+}
+.input {
+  resize: none;
+
+  border-radius: 8px;
+  color: #111;
+  background: #f2f2f2;
+  border: none;
+  padding: 10px;
+  font-size: 16px;
+  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
+    0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+  transition: all 0.5s;
+  &:hover,
+  &:focus {
+    scale: 1.1;
+    box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2),
+      0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
+    background: #0a57d0ad;
+    color: #f2f2f2;
+    outline: none;
   }
 }

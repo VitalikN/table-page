@@ -7,6 +7,13 @@
   height: 100vh;
   align-items: center;
 }
+
+.formik {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .login__container__form {
   display: contents;
 }

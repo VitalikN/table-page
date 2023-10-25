@@ -20,9 +20,9 @@ const PrivateRoute: React.FC<IProps> = ({ children }) => {
     }
   }, [router, token]);
 
-  if (loading) {
-    return <Balls />;
-  }
+  //   if (loading) {
+  //     return <Balls />;
+  //   }
   return <>{children}</>;
 };
 

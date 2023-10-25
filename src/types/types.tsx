@@ -50,3 +50,13 @@ export interface AddTableRowFormProps {
   action: Action;
   selectedId: number | null;
 }
+
+export interface DataTableProps {
+  data: any[];
+  setAction: React.Dispatch<React.SetStateAction<Action>>;
+  setSelectedId: (id: number | null) => void;
+  handleDelete: (id: number) => void;
+}
+export type ErrorResponse = {
+  message: string;
+};

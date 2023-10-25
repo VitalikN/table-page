@@ -10,11 +10,13 @@ export const tableApi = createApi({
     getTableData: builder.query<ResponseData, QueryArg>({
       query: (page) => `table/?limit=10&offset=${(page - 1) * 10}`,
     }),
+    getTableRowById: builder.query<TableData, number>({
+      query: (id) => `/table/${id}/`,
+    }),
     postTableData: builder.mutation<TableData, TableData>({
       query: (newData) => ({
         url: "/table/",
         method: "POST",
-
         body: newData,
       }),
     }),
@@ -23,7 +25,7 @@ export const tableApi = createApi({
       { id: number; data: TableData }
     >({
       query: ({ id, data }) => ({
-        url: `/table/${id}`,
+        url: `/table/${id}/`,
         method: "PUT",
         body: data,
       }),
@@ -33,14 +35,14 @@ export const tableApi = createApi({
       { id: number; data: TableData }
     >({
       query: ({ id, data }) => ({
-        url: `/table/${id}`,
+        url: `/table/${id}/`,
         method: "PATCH",
         body: data,
       }),
     }),
     deleteTableData: builder.mutation<void, number>({
       query: (id) => ({
-        url: `/table/${id}`,
+        url: `/table/${id}/`,
         method: "DELETE",
       }),
     }),
@@ -49,6 +51,7 @@ export const tableApi = createApi({
 
 export const {
   useGetTableDataQuery,
+  useGetTableRowByIdQuery,
   usePostTableDataMutation,
   useUpdateTableDataMutation,
   usePatchTableDataMutation,

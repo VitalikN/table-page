@@ -4,17 +4,9 @@ import { useAuth } from "@/hooks/authHooks";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 
 import styles from "../sass/layouts/login.module.scss";
-import * as Yup from "yup";
 import { ErrorFeedbackProps } from "../types/types";
+import { validationSchema } from "../validationSchemas";
 
-const validationSchema = Yup.object().shape({
-  username: Yup.string()
-    .min(4, "Логін повинен мати щонайменше 4 символи!")
-    .required("Обов'язкове поле!"),
-  password: Yup.string()
-    .min(6, "Пароль повинен мати щонайменше 6 символів!")
-    .required("Обов'язкове поле!"),
-});
 const Login: React.FC = () => {
   const { login, isLoading, isError, error } = useAuth();
 
@@ -40,7 +32,6 @@ const Login: React.FC = () => {
           initialValues={{ username: "", password: "" }}
           onSubmit={(values, { resetForm }) => {
             handleLogin(values.username, values.password);
-            console.log(values);
 
             resetForm();
           }}
@@ -75,7 +66,7 @@ const Login: React.FC = () => {
               </div>
 
               <button className={styles.styledBtn} type="submit">
-                Надіслати
+                Sign in
               </button>
             </Form>
           )}

@@ -40,7 +40,7 @@ export const authApi = createApi({
   }),
 });
 
-// Допоміжна функція для генерації псевдовипадкового токена
+
 const generateRandomToken = () => {
   return [...Array(30)]
     .map(() => ((Math.random() * 36) | 0).toString(36))
