@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  useGetTableRowByIdQuery,
   usePatchTableDataMutation,
   usePostTableDataMutation,
   useUpdateTableDataMutation,
@@ -11,6 +12,7 @@ import { AddTableRowFormProps, ErrorFeedbackProps } from "@/types/types";
 import { Balls } from "./Balls";
 
 import { tableDataSchema } from "../validationSchemas";
+import { skipToken } from "@reduxjs/toolkit/query";
 
 const AddTableRowForm: React.FC<AddTableRowFormProps> = ({
   action,
@@ -20,6 +22,22 @@ const AddTableRowForm: React.FC<AddTableRowFormProps> = ({
     usePostTableDataMutation();
   const [patchTableData] = usePatchTableDataMutation();
   const [updateTableData] = useUpdateTableDataMutation();
+
+  const { data: tableRowData } = useGetTableRowByIdQuery(
+    action === "PATCH" && selectedId ? selectedId : skipToken
+  );
+
+  let formInitialValues = {
+    name: "",
+    email: "",
+    birthday_date: "",
+    phone_number: "",
+    address: "",
+  };
+
+  if (action === "PATCH" && tableRowData) {
+    formInitialValues = tableRowData;
+  }
 
   let buttonText = "";
   switch (action) {
@@ -49,16 +67,9 @@ const AddTableRowForm: React.FC<AddTableRowFormProps> = ({
           {isLoading && <Balls />}
           {error && <div>Error</div>}
           <Formik
-            initialValues={{
-              name: "",
-              email: "",
-              birthday_date: "",
-              phone_number: "",
-              address: "",
-            }}
+            key={`${action}-${selectedId || "new"}`}
+            initialValues={formInitialValues}
             onSubmit={(values, { resetForm }) => {
-              console.log(values);
-
               switch (action) {
                 case "POST":
                   postTableData(values);
